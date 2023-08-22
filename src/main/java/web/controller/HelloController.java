@@ -20,5 +20,8 @@ public class HelloController {
 		model.addAttribute("messages", messages);
 		return "index";
 	}
-	
+	@GetMapping("/hello")
+	public String printHello() {
+		return "hello";
+	}
 }
