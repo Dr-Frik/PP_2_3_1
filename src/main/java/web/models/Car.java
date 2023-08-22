@@ -8,8 +8,8 @@ public class Car {
 
     private int series;
 
-    public Car(String brend, String model, int series) {
-        this.brand = brend;
+    public Car(String brand, String model, int series) {
+        this.brand = brand;
         this.model = model;
         this.series = series;
     }
