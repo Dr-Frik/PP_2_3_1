@@ -8,7 +8,6 @@ import web.service.UserService;
 import web.model.User;
 
 @Controller
-//@RequestMapping("/users")
 public class UserController {
     private final UserService userService;
     @Autowired
@@ -20,13 +19,11 @@ public class UserController {
     @RequestMapping("/")// localhost:8080/
     public String index(Model model) {
         model.addAttribute("allUsers", userService.getAllUsers());
-        //получим людей из DAO и передадим на представление
         return "/allUsers";
     }
-    @GetMapping("/{id}") // localhost:8080/user/(id - цифра)
+    @GetMapping("/{id}") // localhost:8080/user/(id)
     public String getUserById(@PathVariable("id") int id, Model model) {
         model.addAttribute("userId", userService.getUserById(id));
-        //получение одного человека из Service  и передача на представление
         return "/user";
     }
     @GetMapping("/new")
@@ -54,7 +51,5 @@ public class UserController {
         userService.update(id, user);
         return "redirect:/";
     }
-    //@GetMapping("/{id}/delete")
-
 }
 
