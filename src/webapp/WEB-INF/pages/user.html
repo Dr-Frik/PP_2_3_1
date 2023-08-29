@@ -14,7 +14,7 @@
 <a th:href="@{/}" >К списку users</a>
 
 <br/>
-<form th:method="DELETE" th:action="@{/{id}(id=${userId.getId()})}">
+<form th:method="GET" th:action="@{delete/{id}(id=${userId.getId()})}">
     <input type="submit" value="Delete"/>
 </form>
 </body>
