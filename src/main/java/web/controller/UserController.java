@@ -21,7 +21,7 @@ public class UserController {
         model.addAttribute("allUsers", userService.getAllUsers());
         return "/allUsers";
     }
-    @GetMapping("/{id}") // localhost:8080/user/(id - öèôðà)
+    @GetMapping("/{id}") // localhost:8080/user/(id)
     public String getUserById(@PathVariable("id") int id, Model model) {
         model.addAttribute("userId", userService.getUserById(id));
         return "/user";
@@ -51,7 +51,5 @@ public class UserController {
         userService.update(id, user);
         return "redirect:/";
     }
-    //@GetMapping("/{id}/delete")
-
 }
 
