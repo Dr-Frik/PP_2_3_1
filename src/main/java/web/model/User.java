@@ -1,6 +1,12 @@
 package web.model;
 
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.GenerationType;
 
 @Entity
 @Table(name = "users")
@@ -22,6 +28,7 @@ public class User {
 
     public User() {
     }
+
     public int getId() {
         return id;
     }

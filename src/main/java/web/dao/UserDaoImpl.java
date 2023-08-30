@@ -3,14 +3,17 @@ package web.dao;
 import org.springframework.stereotype.Repository;
 import web.model.User;
 
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+
 @Repository
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
+
     @Override
     public List<User> getAllUsers() {
         return entityManager.createQuery("SELECT u FROM User u", User.class)
@@ -28,15 +31,16 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void update(int id, User user)  {
+    public void update(User user) {
         entityManager.merge(user);
     }
 
     @Override
     public void delete(int id) {
         User user = getUserById(id);
-        if(user == null)
-            throw new NullPointerException("Wrong user");
+        if (user == null) {
+            throw new EntityExistsException("Wrong user");
+        }
         entityManager.remove(user);
     }
 }
